@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">PolloMax</string>
+
+    <string-array name="tipos_alimentacion">
+        <item>Inicio</item>
+        <item>Engorde</item>
+    </string-array>
+
 </resources>

@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MACHO"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="8dp"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF">
+
+                <TableRow android:background="#FF5722">
+
+                    <TextView
+                        style="@style/TablaHeader"
+                        android:text="SEMANA"
+                        android:textColor="#212121" />
+
+                    <TextView
+                        style="@style/TablaHeader"
+                        android:text="DÍA"
+                        android:textColor="#212121" />
+
+                    <TextView
+                        style="@style/TablaHeader"
+                        android:text="CONSUMO ACUMULADO GRAMOS"
+                        android:textColor="#212121" />
+
+                    <TextView
+                        style="@style/TablaHeader"
+                        android:text="PESO AVE"
+                        android:textColor="#212121" />
+
+                    <TextView
+                        style="@style/TablaHeader"
+                        android:text="CONVERS."
+                        android:textColor="#212121" />
+
+                    <TextView
+                        style="@style/TablaHeader"
+                        android:text="PLAN DE ALIMENTACIÓN"
+                        android:textColor="#212121" />
+                </TableRow>
+
+                <TableRow>
+                    <TextView android:text="1"
+                        style="@style/TablaCelda"
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
+                    <TextView android:text="1 al 7" style="@style/TablaCelda"/>
+                    <TextView android:text="164 gr." style="@style/TablaCelda"/>
+                    <TextView android:text="211 gr" style="@style/TablaCelda"/>
+                    <TextView android:text="0,78" style="@style/TablaCelda"/>
+                    <TextView android:text="POLLITO PREINICIADOR" style="@style/AlimentacionAmarillo"/>
+                </TableRow>
+
+                <TableRow>
+                    <TextView android:text="2"
+                        style="@style/TablaCelda"
+                        android:textStyle="bold"
+                        android:textSize="15sp"/>
+                    <TextView android:text="8 al 14" style="@style/TablaCelda"/>
+                    <TextView android:text="551 gr." style="@style/TablaCelda"/>
+                    <TextView android:text="535 gr" style="@style/TablaCelda"/>
+                    <TextView android:text="1,03" style="@style/TablaCelda"/>
+                    <TextView android:text="SUPER POLLITO INICIACIÓN" style="@style/AlimentacionNaranja"/>
+                </TableRow>
+
+                <TableRow>
+                    <TextView android:text="3"
+                        style="@style/TablaCelda"
+                        android:textStyle="bold"
+                        android:textSize="15sp"/>
+                    <TextView android:text="15 al 21" style="@style/TablaCelda"/>
+                    <TextView android:text="1.218 gr." style="@style/TablaCelda"/>
+                    <TextView android:text="1.035 gr" style="@style/TablaCelda"/>
+                    <TextView android:text="1,18" style="@style/TablaCelda"/>
+                    <TextView android:text="SUPER POLLITO INICIACIÓN" style="@style/AlimentacionNaranja"/>
+                </TableRow>
+
+                <TableRow>
+                    <TextView android:text="4"
+                        style="@style/TablaCelda"
+                        android:textStyle="bold"
+                        android:textSize="15sp"/>
+                    <TextView android:text="22 al 28" style="@style/TablaCelda"/>
+                    <TextView android:text="2.199 gr." style="@style/TablaCelda"/>
+                    <TextView android:text="1.681 gr" style="@style/TablaCelda"/>
+                    <TextView android:text="1,31" style="@style/TablaCelda"/>
+                    <TextView android:text="SUPER POLLO ENGORDE DORADO" style="@style/AlimentacionAzul"/>
+                </TableRow>
+
+                <TableRow>
+                    <TextView android:text="5"
+                        style="@style/TablaCelda"
+                        android:textStyle="bold"
+                        android:textSize="15sp"/>
+                    <TextView android:text="29 al 35" style="@style/TablaCelda"/>
+                    <TextView android:text="3.483 gr." style="@style/TablaCelda"/>
+                    <TextView android:text="2.421 gr" style="@style/TablaCelda"/>
+                    <TextView android:text="1,44" style="@style/TablaCelda"/>
+                    <TextView android:text="SUPER POLLO ENGORDE DORADO" style="@style/AlimentacionAzul"/>
+                </TableRow>
+
+                <TableRow>
+                    <TextView android:text="6"
+                        style="@style/TablaCelda"
+                        android:textStyle="bold"
+                        android:textSize="15sp"/>
+                    <TextView android:text="36 al 42" style="@style/TablaCelda"/>
+                    <TextView android:text="5.023." style="@style/TablaCelda"/>
+                    <TextView android:text="3.100 gr" style="@style/TablaCelda"/>
+                    <TextView android:text="1.57" style="@style/TablaCelda"/>
+                    <TextView android:text="SUPER POLLO ENGORDE DORADO" style="@style/AlimentacionAzul"/>
+                </TableRow>
+
+            </TableLayout>
+        </HorizontalScrollView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HEMBRA"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+            <TableLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF">
+
+                <TableRow android:background="#FF5722">
+
+                    <TextView
+                        style="@style/TablaHeader"
+                        android:text="SEMANA"
+                        android:textColor="#212121" />
+
+                    <TextView
+                        style="@style/TablaHeader"
+                        android:text="DÍA"
+                        android:textColor="#212121" />
+
+                    <TextView
+                        style="@style/TablaHeader"
+                        android:text="CONSUMO ACUMULADO GRAMOS"
+                        android:textColor="#212121" />
+
+                    <TextView
+                        style="@style/TablaHeader"
+                        android:text="PESO AVE"
+                        android:textColor="#212121" />
+
+                    <TextView
+                        style="@style/TablaHeader"
+                        android:text="CONVERS."
+                        android:textColor="#212121" />
+
+                    <TextView
+                        style="@style/TablaHeader"
+                        android:text="PLAN DE ALIMENTACIÓN"
+                        android:textColor="#212121" />
+                </TableRow>
+
+                <TableRow>
+                    <TextView android:text="1"
+                        style="@style/TablaCelda"
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
+                    <TextView android:text="1 al 7" style="@style/TablaCelda"/>
+                    <TextView android:text="178 gr." style="@style/TablaCelda"/>
+                    <TextView android:text="211 gr" style="@style/TablaCelda"/>
+                    <TextView android:text="0,84" style="@style/TablaCelda"/>
+                    <TextView android:text="POLLITO PREINICIADOR" style="@style/AlimentacionAmarillo"/>
+                </TableRow>
+
+                <TableRow>
+                    <TextView android:text="2"
+                        style="@style/TablaCelda"
+                        android:textStyle="bold"
+                        android:textSize="15sp"/>
+                    <TextView android:text="8 al 14" style="@style/TablaCelda"/>
+                    <TextView android:text="555 gr." style="@style/TablaCelda"/>
+                    <TextView android:text="523 gr" style="@style/TablaCelda"/>
+                    <TextView android:text="1,06" style="@style/TablaCelda"/>
+                    <TextView android:text="SUPER POLLITO INICIACIÓN" style="@style/AlimentacionNaranja"/>
+                </TableRow>
+
+                <TableRow>
+                    <TextView android:text="3"
+                        style="@style/TablaCelda"
+                        android:textStyle="bold"
+                        android:textSize="15sp"/>
+                    <TextView android:text="15 al 21" style="@style/TablaCelda"/>
+                    <TextView android:text="1.177 gr." style="@style/TablaCelda"/>
+                    <TextView android:text="980 gr" style="@style/TablaCelda"/>
+                    <TextView android:text="1,20" style="@style/TablaCelda"/>
+                    <TextView android:text="SUPER POLLITO INICIACIÓN" style="@style/AlimentacionNaranja"/>
+                </TableRow>
+
+                <TableRow>
+                    <TextView android:text="4"
+                        style="@style/TablaCelda"
+                        android:textStyle="bold"
+                        android:textSize="15sp"/>
+                    <TextView android:text="22 al 28" style="@style/TablaCelda"/>
+                    <TextView android:text="2.069 gr." style="@style/TablaCelda"/>
+                    <TextView android:text="1.548 gr" style="@style/TablaCelda"/>
+                    <TextView android:text="1,33" style="@style/TablaCelda"/>
+                    <TextView android:text="SUPER POLLO ENGORDE DORADO" style="@style/AlimentacionAzul"/>
+                </TableRow>
+
+                <TableRow>
+                    <TextView android:text="5"
+                        style="@style/TablaCelda"
+                        android:textStyle="bold"
+                        android:textSize="15sp"/>
+                    <TextView android:text="29 al 35" style="@style/TablaCelda"/>
+                    <TextView android:text="3.213 gr." style="@style/TablaCelda"/>
+                    <TextView android:text="2.176 gr" style="@style/TablaCelda"/>
+                    <TextView android:text="1,48" style="@style/TablaCelda"/>
+                    <TextView android:text="SUPER POLLO ENGORDE DORADO" style="@style/AlimentacionAzul"/>
+                </TableRow>
+
+                <TableRow>
+                    <TextView android:text="6"
+                        style="@style/TablaCelda"
+                        android:textStyle="bold"
+                        android:textSize="15sp"/>
+                    <TextView android:text="36 al 42" style="@style/TablaCelda"/>
+                    <TextView android:text="4.557." style="@style/TablaCelda"/>
+                    <TextView android:text="2.700 gr" style="@style/TablaCelda"/>
+                    <TextView android:text="1.62" style="@style/TablaCelda"/>
+                    <TextView android:text="SUPER POLLO ENGORDE DORADO" style="@style/AlimentacionAzul"/>
+                </TableRow>
+
+            </TableLayout>
+        </HorizontalScrollView>
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".IngresosActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvIngresoTituloCorral"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Registrar Venta para: Corral 1"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cantidad de Pollos Vendidos"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/etCantidadPollosVendidos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:hint="Ej: 5"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Peso Total de todos los pollos de la Venta (kg)"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/etPesoTotalVenta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="Ej: 12.5 kG"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Precio de Venta por Kilo"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/etPrecioVentaKilo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="Ej: 13.000"
+            android:layout_marginBottom="24dp"/>
+
+        <Button
+            android:id="@+id/btnCalcularIngreso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Calcular Ingreso"
+            android:layout_marginBottom="16dp"/>
+        
+        <TextView
+            android:id="@+id/tvIngresoTotalVenta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            tools:text="Ingreso Total de la Venta: $118,750"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/holo_green_dark"
+            android:visibility="gone" 
+            tools:visibility="visible" />
+
+        <Button
+            android:id="@+id/btnConfirmarVenta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Confirmar y Registrar Venta"
+            android:layout_marginTop="16dp"
+            android:visibility="gone"
+            tools:visibility="visible"/>
+
+    </LinearLayout>
+</ScrollView>

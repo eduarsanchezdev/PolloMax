@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources><style name="TablaHeader">
+    <item name="android:padding">4dp</item>
+    <item name="android:background">#EEED653D</item>
+    <item name="android:textColor">#FFFFFF</item>
+    <item name="android:textStyle">bold</item>
+    <item name="android:textSize">12sp</item>
+</style>
+
+    <style name="TablaCelda">
+        <item name="android:padding">6dp</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:background">#FFE0B2</item>
+        <item name="android:gravity">center</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
+
+
+    <style name="AlimentacionAmarillo">
+        <item name="android:padding">6dp</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:background">#FFF176</item>
+        <item name="android:gravity">center</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
+
+    <style name="AlimentacionNaranja">
+        <item name="android:padding">6dp</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:background">#FFB74D</item>
+        <item name="android:gravity">center</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
+
+
+    <style name="AlimentacionAzul">
+        <item name="android:padding">6dp</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:background">#81D4FA</item>
+        <item name="android:gravity">center</item>
+        <item name="android:minHeight">48dp</item>
+    </style>
+</resources>

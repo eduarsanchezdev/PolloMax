@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    tools:context=".DetalleCorralActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnAbrirDialogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Agregar más informacion"
+                app:icon="@drawable/ic_add" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvDetalleNombreCorral"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:text="Nombre del Corral" />
+
+        <TextView
+            android:id="@+id/tvDetalleFechaInicio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginTop="12dp"
+            tools:text="Fecha de inicio:" />
+
+        <TextView
+            android:id="@+id/tvDetalleEdadLote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            tools:text="Edad del lote:" />
+        
+        <TextView
+            android:id="@+id/tvDetalleCantidadPollos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            tools:text="Cantidad Inicial:" />
+
+        <TextView
+            android:id="@+id/tvDetallePollosVivos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            tools:text="Pollos vivos:" />
+
+        <TextView
+            android:id="@+id/tvDetalleMortalidad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            tools:text="Mortalidad:" />
+
+        <TextView
+            android:id="@+id/tvDetallePesoPromedio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            tools:text="Peso promedio del lote:" />
+
+        <TextView
+            android:id="@+id/tvDetalleConsumoAcumulado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="18sp"
+            tools:text="Consumo acumulado del lote: N/A" />
+
+        <TextView
+            android:id="@+id/tvDetalleTipoAlimentacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="18sp"
+            tools:text="Tipo de alimentación: N/A" />
+
+        <TextView
+            android:id="@+id/tvDetalleEstadoCorral"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="18sp"
+            tools:text="Estado del corral: N/A" />
+
+        <!-- SECCIÓN DE FINANZAS -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#BDBDBD"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Finanzas del Corral"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp"/>
+        
+        <TextView
+            android:id="@+id/tvCostoInicialPollos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            tools:text="Costo Pollos: $50,000" />
+            
+        <TextView
+            android:id="@+id/tvPrecioPromedioKilo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            tools:text="Precio Kilo de purina: $2,100" />
+            
+        <TextView
+            android:id="@+id/tvGastoTotalAlimento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            tools:text="Gasto total en Alimento: $150,000" />
+            
+        <TextView
+            android:id="@+id/tvPollosVendidos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            tools:text="Pollos Vendidos: 15" />
+            
+        <TextView
+            android:id="@+id/tvGananciaTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            tools:text="Ganancia de Venta: $250,000" />
+
+        <TextView
+            android:id="@+id/tvGananciaNeta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            tools:text="Ganancia Neta: $100,000" />
+
+        <Button
+            android:id="@+id/btnEliminarCorral"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="@android:color/holo_red_light"
+            android:text="Eliminar Corral"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+</ScrollView>

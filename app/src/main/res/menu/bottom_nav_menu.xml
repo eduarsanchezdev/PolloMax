@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_ver_corrales"
+        android:icon="@drawable/view"
+        android:title="Corrales" />
+
+    <item
+        android:id="@+id/nav_crear_corral"
+        android:icon="@drawable/add"
+        android:title="Crear" />
+
+    <item
+        android:id="@+id/nav_alimentacion"
+        android:icon="@drawable/eats"
+        android:title="Alimentación" />
+
+    <item
+        android:id="@+id/nav_finanzas"
+        android:icon="@drawable/stats"
+        android:title="Finanzas" />
+
+    <item
+        android:id="@+id/nav_soporte"
+        android:icon="@drawable/ic_support"
+        android:title="Soporte" />
+
+</menu>

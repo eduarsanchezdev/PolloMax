@@ -32,7 +32,17 @@ android {
 }
 
 dependencies {
+    // Room components
+    implementation("androidx.room:room-runtime:2.6.1")
+    implementation(libs.recyclerview)
+    annotationProcessor("androidx.room:room-compiler:2.6.1")
 
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:2.6.1")
+
+    // optional - Test helpers
+    testImplementation("androidx.room:room-testing:2.6.1")
+    androidTestImplementation("androidx.room:room-testing:2.6.1")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
