@@ -1,11 +1,19 @@
 package com.example.pollomax;
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.pdf.PdfDocument;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,6 +22,9 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,9 +38,10 @@ public class DetalleCorralActivity extends AppCompatActivity {
             tvDetalleFechaInicio, tvDetalleEdadLote, tvDetalleMortalidad,
             tvDetallePesoPromedio, tvDetalleConsumoAcumulado, tvDetalleTipoAlimentacion,
             tvDetalleEstadoCorral, tvDetallePollosVivos, tvCostoInicialPollos,
-            tvPrecioPromedioKilo, tvGastoTotalAlimento, tvPollosVendidos, tvGananciaTotal, tvGananciaNeta;
+            tvPrecioPromedioKilo, tvGastoTotalAlimento, tvPollosVendidos, tvGananciaTotal, tvGananciaNeta,
+            tvGastoInsumosDetalle;
     
-    private Button btnAbrirDialogo, btnEliminarCorral;
+    private Button btnAbrirDialogo, btnEliminarCorral, btnExportarPdf;
 
     private BaseDeDatos dbHelper;
     private int corralId = -1;
@@ -56,6 +68,8 @@ public class DetalleCorralActivity extends AppCompatActivity {
         });
 
         btnEliminarCorral.setOnClickListener(v -> mostrarDialogoConfirmacion());
+        btnExportarPdf.setOnClickListener(v -> exportarPdfCorral());
+
     }
 
     @Override
@@ -85,6 +99,10 @@ public class DetalleCorralActivity extends AppCompatActivity {
         tvGananciaNeta = findViewById(R.id.tvGananciaNeta);
         btnAbrirDialogo = findViewById(R.id.btnAbrirDialogo);
         btnEliminarCorral = findViewById(R.id.btnEliminarCorral);
+        tvGastoInsumosDetalle = findViewById(R.id.tvGastoInsumosDetalle);
+        btnExportarPdf = findViewById(R.id.btnExportarPdf);
+
+
     }
 
     private void mostrarDialogoConfirmacion() {
@@ -96,6 +114,83 @@ public class DetalleCorralActivity extends AppCompatActivity {
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
     }
+    private void exportarPdfCorral() {
+        PdfDocument pdfDocument = new PdfDocument();
+        Paint paint = new Paint();
+
+        PdfDocument.PageInfo pageInfo =
+                new PdfDocument.PageInfo.Builder(595, 842, 1).create(); // A4
+
+        PdfDocument.Page page = pdfDocument.startPage(pageInfo);
+        Canvas canvas = page.getCanvas();
+
+        int y = 50;
+
+        paint.setTextSize(18);
+        paint.setFakeBoldText(true);
+        canvas.drawText("REPORTE DEL CORRAL", 40, y, paint);
+
+        paint.setTextSize(12);
+        paint.setFakeBoldText(false);
+        y += 40;
+
+        canvas.drawText(tvDetalleNombreCorral.getText().toString(), 40, y, paint); y += 20;
+        canvas.drawText(tvDetalleFechaInicio.getText().toString(), 40, y, paint); y += 20;
+        canvas.drawText(tvDetalleEdadLote.getText().toString(), 40, y, paint); y += 20;
+        canvas.drawText(tvDetalleCantidadPollos.getText().toString(), 40, y, paint); y += 20;
+        canvas.drawText(tvDetallePollosVivos.getText().toString(), 40, y, paint); y += 20;
+        canvas.drawText(tvDetalleMortalidad.getText().toString(), 40, y, paint); y += 20;
+
+        y += 20;
+        paint.setFakeBoldText(true);
+        canvas.drawText("FINANZAS", 40, y, paint);
+        paint.setFakeBoldText(false);
+        y += 20;
+
+        canvas.drawText(tvCostoInicialPollos.getText().toString(), 40, y, paint); y += 20;
+        canvas.drawText(tvGastoTotalAlimento.getText().toString(), 40, y, paint); y += 20;
+        canvas.drawText(tvGastoInsumosDetalle.getText().toString(), 40, y, paint); y += 20;
+        canvas.drawText(tvGananciaTotal.getText().toString(), 40, y, paint); y += 20;
+
+        paint.setFakeBoldText(true);
+        canvas.drawText(tvGananciaNeta.getText().toString(), 40, y, paint);
+
+        pdfDocument.finishPage(page);
+
+        try {
+            ContentValues values = new ContentValues();
+            values.put(MediaStore.Downloads.DISPLAY_NAME, "Corral_" + corralId + ".pdf");
+            values.put(MediaStore.Downloads.MIME_TYPE, "application/pdf");
+            values.put(MediaStore.Downloads.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS);
+
+            Uri uri = null;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                uri = getContentResolver().insert(
+                        MediaStore.Downloads.EXTERNAL_CONTENT_URI,
+                        values
+                );
+            }
+
+            if (uri != null) {
+                try (OutputStream outputStream = getContentResolver().openOutputStream(uri)) {
+                    pdfDocument.writeTo(outputStream);
+                    Toast.makeText(this, "PDF guardado en Descargas", Toast.LENGTH_LONG).show();
+                } catch (Exception e) {
+                    Toast.makeText(this, "Error al guardar PDF", Toast.LENGTH_SHORT).show();
+                    e.printStackTrace();
+                }
+            } else {
+                Toast.makeText(this, "No se pudo crear el archivo", Toast.LENGTH_SHORT).show();
+            }
+
+        } catch (Exception e) {
+            Toast.makeText(this, "Error al generar PDF", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        } finally {
+            pdfDocument.close();
+        }
+    }
+
 
     private void eliminarCorral() {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -123,10 +218,17 @@ public class DetalleCorralActivity extends AppCompatActivity {
                 double precioKilo = cursor.getDouble(cursor.getColumnIndexOrThrow("precio_kilo_promedio"));
                 int pollosVendidos = cursor.getInt(cursor.getColumnIndexOrThrow("pollos_vendidos"));
                 double gananciaBruta = cursor.getDouble(cursor.getColumnIndexOrThrow("ganancia_total"));
+                double gastoInsumos = cursor.getDouble(
+                        cursor.getColumnIndexOrThrow("gasto_insumos")
+                );
+
 
                 int pollosVivos = cantidadInicial - mortalidad - pollosVendidos;
                 double gastoTotalAlimento = consumoTotal * precioKilo;
-                double gananciaNeta = gananciaBruta - gastoTotalAlimento - costoInicialPollos;
+                double gananciaNeta = gananciaBruta
+                        - gastoTotalAlimento
+                        - costoInicialPollos
+                        - gastoInsumos;
 
                 long edadLote = -1;
                 if (fechaCompraStr != null && !fechaCompraStr.isEmpty()) {
@@ -165,6 +267,10 @@ public class DetalleCorralActivity extends AppCompatActivity {
                 tvGastoTotalAlimento.setText("Gasto total en Alimento: " + (gastoTotalAlimento > 0 ? String.format(Locale.getDefault(), "$%,.2f", gastoTotalAlimento) : "N/A"));
                 tvPollosVendidos.setText("Pollos Vendidos: " + pollosVendidos);
                 tvGananciaTotal.setText("Ganancia de Venta: " + String.format(Locale.getDefault(), "$%,.2f", gananciaBruta));
+                tvGastoInsumosDetalle.setText(
+                        "Gasto Insumos: " +
+                                String.format(Locale.getDefault(), "$%,.2f", gastoInsumos)
+                );
                 tvGananciaNeta.setText("Ganancia Neta: " + String.format(Locale.getDefault(), "$%,.2f", gananciaNeta));
 
                 double peso = cursor.getDouble(cursor.getColumnIndexOrThrow("peso_promedio"));

@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         dbHelper = new BaseDeDatos(this);
 
-        // Vincular vistas
+
         tvCorralesActivos = findViewById(R.id.tvCorralesActivos);
         tvMortalidad = findViewById(R.id.tvMortalidad);
         tvPollosVivos = findViewById(R.id.tvPollosVivos);
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         tvGananciaNeta = findViewById(R.id.tvGananciaNeta);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        // Configurar listener para la barra de navegación
+
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.nav_ver_corrales) {
@@ -80,8 +80,18 @@ public class MainActivity extends AppCompatActivity {
         double costoTotalPollos = 0;
         double gananciaBrutaTotal = 0;
         double gastoAlimentoTotal = 0;
+        double gastoInsumosTotal = 0;
 
-        String query = "SELECT SUM(mortalidad_total), SUM(cantidad_pollos), SUM(pollos_vendidos), SUM(precio_pollos), SUM(ganancia_total), SUM(consumo_acumulado * precio_kilo_promedio) FROM Corral";
+        String query =
+                "SELECT " +
+                        "SUM(mortalidad_total), " +
+                        "SUM(cantidad_pollos), " +
+                        "SUM(pollos_vendidos), " +
+                        "SUM(precio_pollos), " +
+                        "SUM(ganancia_total), " +
+                        "SUM(consumo_acumulado * precio_kilo_promedio), " +
+                        "SUM(gasto_insumos) " +
+                        "FROM Corral";
         try (Cursor cursor = db.rawQuery(query, null)) {
             if (cursor.moveToFirst()) {
                 mortalidadTotal = cursor.getInt(0);
@@ -90,13 +100,16 @@ public class MainActivity extends AppCompatActivity {
                 costoTotalPollos = cursor.getDouble(3);
                 gananciaBrutaTotal = cursor.getDouble(4);
                 gastoAlimentoTotal = cursor.getDouble(5);
+                gastoInsumosTotal = cursor.getDouble(6);
             }
         }
 
         int pollosVivosTotal = pollosInicialesTotal - mortalidadTotal - pollosVendidosTotal;
-        // --- CORRECCIÓN AQUÍ ---
-        // Se resta también el costo inicial de los pollos
-        double gananciaNetaTotal = gananciaBrutaTotal - gastoAlimentoTotal - costoTotalPollos;
+        double gananciaNetaTotal = gananciaBrutaTotal
+                - gastoAlimentoTotal
+                - costoTotalPollos
+                - gastoInsumosTotal;
+
 
         tvCorralesActivos.setText(String.valueOf(corralesActivos));
         tvMortalidad.setText(String.valueOf(mortalidadTotal));

@@ -149,6 +149,15 @@
             android:textSize="18sp"
             android:layout_marginTop="8dp"
             tools:text="Gasto total en Alimento: $150,000" />
+
+        <!-- Nuevo slot para Insumos en Detalle -->
+        <TextView
+            android:id="@+id/tvGastoInsumosDetalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_marginTop="8dp"
+            tools:text="Gasto Insumos: $15,000" />
             
         <TextView
             android:id="@+id/tvPollosVendidos"
@@ -174,6 +183,14 @@
             android:textStyle="bold"
             android:layout_marginTop="8dp"
             tools:text="Ganancia Neta: $100,000" />
+        <Button
+            android:id="@+id/btnExportarPdf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exportar PDF"
+            android:layout_marginTop="24dp"
+            android:layout_gravity="center_horizontal"/>
+
 
         <Button
             android:id="@+id/btnEliminarCorral"

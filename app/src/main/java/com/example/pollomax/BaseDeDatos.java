@@ -6,8 +6,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class BaseDeDatos extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "PollosMax.db";
-    // Incrementar la versión de la base de datos
-    private static final int DATABASE_VERSION = 2;
+    // Incrementar la versión de la base de datos para añadir gasto_insumos
+    private static final int DATABASE_VERSION = 3;
 
     public BaseDeDatos(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -15,7 +15,6 @@ public class BaseDeDatos extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // Añadir las nuevas columnas a la sentencia de creación
         String createTableCorral = "CREATE TABLE Corral (" +
                 "id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "nombre TEXT," +
@@ -29,17 +28,31 @@ public class BaseDeDatos extends SQLiteOpenHelper {
                 "estado_corral TEXT DEFAULT 'N/A'," +
                 "precio_kilo_promedio REAL DEFAULT 0," +
                 "pollos_vendidos INTEGER DEFAULT 0," +
-                "ganancia_total REAL DEFAULT 0)";
+                "ganancia_total REAL DEFAULT 0," +
+                "gasto_insumos REAL DEFAULT 0)"; // Nueva columna
         db.execSQL(createTableCorral);
+
+        String createTableEventos = "CREATE TABLE Eventos (" +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "timestamp DATETIME DEFAULT CURRENT_TIMESTAMP," +
+                "descripcion TEXT)";
+        db.execSQL(createTableEventos);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // Implementar una actualización no destructiva
         if (oldVersion < 2) {
             db.execSQL("ALTER TABLE Corral ADD COLUMN precio_kilo_promedio REAL DEFAULT 0");
             db.execSQL("ALTER TABLE Corral ADD COLUMN pollos_vendidos INTEGER DEFAULT 0");
             db.execSQL("ALTER TABLE Corral ADD COLUMN ganancia_total REAL DEFAULT 0");
+        }
+        if (oldVersion < 3) {
+            // Añadir gasto_insumos y crear tabla Eventos si no existe
+            db.execSQL("ALTER TABLE Corral ADD COLUMN gasto_insumos REAL DEFAULT 0");
+            db.execSQL("CREATE TABLE IF NOT EXISTS Eventos (" +
+                    "id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "timestamp DATETIME DEFAULT CURRENT_TIMESTAMP," +
+                    "descripcion TEXT)");
         }
     }
 }

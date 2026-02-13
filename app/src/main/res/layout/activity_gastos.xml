@@ -50,6 +50,20 @@
             android:layout_height="wrap_content"
             android:text="* Se asume que cada bulto contiene 40 kg."
             android:textSize="12sp"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Nuevo slot para Insumos -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Valor de Insumos Adicionales"
+            android:textSize="16sp" />
+        <EditText
+            android:id="@+id/etValorInsumos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="Ej: 15000"
             android:layout_marginBottom="24dp"/>
 
         <Button
@@ -96,7 +110,15 @@
                 android:layout_height="wrap_content"
                 tools:text="Consumo Total del Corral: 55.0 kg"
                 android:textSize="18sp"
-                android:layout_marginBottom="16dp"/>
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/tvGastoTotalInsumos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Total Insumos: $15,000"
+                android:textSize="18sp"
+                android:layout_marginBottom="8dp"/>
 
             <TextView
                 android:id="@+id/tvGastoTotalAlimento"

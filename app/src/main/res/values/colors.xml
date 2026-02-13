@@ -2,4 +2,21 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Warm Color Palette for PolloMax -->
+    <color name="primary_warm">#F57C00</color> <!-- Deep Orange -->
+    <color name="on_primary_warm">#FFFFFF</color>
+    <color name="primary_container_warm">#FFE0B2</color>
+    <color name="on_primary_container_warm">#260E00</color>
+
+    <color name="secondary_warm">#FBC02D</color> <!-- Yellow/Amber -->
+    <color name="on_secondary_warm">#000000</color>
+    <color name="secondary_container_warm">#FFF9C4</color>
+    <color name="on_secondary_container_warm">#211B00</color>
+
+    <color name="tertiary_warm">#8D6E63</color> <!-- Brownish -->
+    <color name="on_tertiary_warm">#FFFFFF</color>
+
+    <color name="background_warm">#FFFDE7</color> <!-- Very light yellow -->
+    <color name="surface_warm">#FFFDE7</color>
 </resources>
